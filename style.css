@@ -686,7 +686,7 @@ form select {
   width: 100%;
   max-width: 100%;
   display: block;
-  height: auto;
+  height: 147px;;
 }
 .students-grid .student-name {
   font-size: 18px;
