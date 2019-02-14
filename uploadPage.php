@@ -1,3 +1,7 @@
+<?php
+session_start();
+if(isset($_SESSION["user_name"]))
+{																																						?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -5,7 +9,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 		
-		<title>Gallery | Fazl-E-Omar</title>
+		<title>Documents | Fazl-E-Omar</title>
 		<!-- Loading third party fonts -->
 		<link href="http://fonts.googleapis.com/css?family=Arvo:400,700|" rel="stylesheet" type="text/css">
 		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -16,6 +20,13 @@
 		<script src="js/ie-support/html5.js"></script>
 		<script src="js/ie-support/respond.js"></script>
 		<![endif]-->
+		<style>
+		@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+		.isa_error {
+			color: #D8000C;
+			background-color: #FFD2D2;
+		}
+		</style>
 	</head>
 
 
@@ -26,7 +37,7 @@
 				<div class="primary-header">
 					<div class="container">
 						<a href="index.html" id="branding">
-							<img src="images/logo.png" alt="Lincoln high School">
+							<img src="images/logo.png" alt="Fazl-E-Omar Public School">
 							<h1 class="site-title">Fazl-E-Omar Public School</h1>
 						</a> <!-- #branding -->
 						
@@ -37,8 +48,8 @@
 								<li class="menu-item"><a href="aboutUs.html">About Us</a></li>
 								<li class="menu-item"><a href="admission.html">Admission</a></li>
 								<!--li class="menu-item"><a href="academics.html">Academics</a></li-->
-								<li class="menu-item"><a href="facilities.html">Facilities</a></li>
-								<li class="menu-item current-menu-item"><a href="#">Gallery</a></li>
+								<li class="menu-item"><a href="#">Facilities</a></li>
+								<li class="menu-item"><a href="gallery.php">Gallery</a></li>
 								<li class="menu-item"><a href="docs.html">Docs</a></li>
 								<!--li class="menu-item"><a href="contact.html">Contact</a></li-->
 							</ul> <!-- .menu -->
@@ -50,7 +61,7 @@
 
 				<div class="page-title">
 					<div class="container">
-						<h2>Gallery</h2>
+						<h2>Gallery upload</h2>
 					</div>
 				</div>
 			</header>
@@ -59,60 +70,28 @@
 		<main class="main-content">
 			<div class="fullwidth-block inner-content">
 				<div class="container">
-					<div class="fullwidth-content">
-						<div class="pagination">
-							<a href="#" class="page-numbers"><i class="fa fa-angle-left"></i></a>
-							<span class="page-numbers current">1</span>
-							<a href="gallery2.html" class="page-numbers">2</a>
-							<a href="gallery2.html" class="page-numbers"><i class="fa fa-angle-right"></i></a>
-						</div>
-
-						<ul class="students-grid">
-							<li class="student">
-								<figure class="avatar"><a href="images/gallery/1.jpg"><img src="images/gallery/1.jpg" alt="Student 1"></a></figure>
-								<h3 class="student-name"><a href="images/gallery/1.jpg">Title</a></h3>
-							</li>
-							<li class="student">
-								<figure class="avatar"><a href="images/gallery/2.jpg"><img src="images/gallery/2.jpg" alt="Student 2"></figure>
-								<h3 class="student-name"><a href="images/gallery/2.jpg">Title</a></h3>
-							</li>
-							<li class="student">
-								<figure class="avatar"><a href="images/gallery/3.jpg"><img src="images/gallery/3.jpg" alt="Student 3"></figure>
-								<h3 class="student-name"><a href="images/gallery/3.jpg">Title</a></h3>
-							</li>
-							<li class="student">
-								<figure class="avatar"><a href="images/gallery/4.jpg"><img src="images/gallery/4.jpg" alt="Student 4"></figure>
-								<h3 class="student-name"><a href="images/gallery/4.jpg">Title</a></h3>
-							</li>
-							<li class="student">
-								<figure class="avatar"><a href="images/gallery/5.jpg"><img src="images/gallery/5.jpg" alt="Student 5"></figure>
-								<h3 class="student-name"><a href="images/gallery/5.jpg">Title</a></h3>
-							</li>
-							<li class="student">
-								<figure class="avatar"><a href="images/gallery/6.jpg"><img src="images/gallery/6.jpg" alt="Student 6"></figure>
-								<h3 class="student-name"><a href="images/gallery/6.jpg">Title</a></h3>
-							</li>
-							<li class="student">
-								<figure class="avatar"><a href="images/gallery/7.jpg"><img src="images/gallery/7.jpg" alt="Student 7"></figure>
-								<h3 class="student-name"><a href="images/gallery/7.jpg">Title</a></h3>
-							</li>
-							<li class="student">
-								<figure class="avatar"><a href="images/gallery/8.jpg"><img src="images/gallery/8.jpg" alt="Student 8"></figure>
-								<h3 class="student-name"><a href="images/gallery/8.jpg">Title</a></h3>
-							</li>
-						</ul>
-
-						<div class="pagination">
-							<a href="#" class="page-numbers"><i class="fa fa-angle-left"></i></a>
-							<span class="page-numbers current">1</span>
-							<a href="gallery2.html" class="page-numbers">2</a>
-							<a href="gallery2.html" class="page-numbers"><i class="fa fa-angle-right"></i></a>
+					<div class="col-md-8">																			<?php
+						if(isset($_GET['error']))
+						{																							?>
+							<div class="isa_error">
+							   <i class="fa fa-times-circle"></i>
+							   <?php echo $_GET['error'];?>
+							</div>																					<?php								
+						}																							?>					
+						<div class="content">																		 
+							<form action="upload.php" method="post" enctype="multipart/form-data">
+								<h3>Select image to upload:</h3>
+								<input type="file" name="fileToUpload" id="fileToUpload" required>
+								<h3>Title:</h3>
+								<input type="text" name="title" id="title" required>
+								<br/><br/><br/>
+								<input type="submit" value="Upload Image" name="submit">
+							</form>
 						</div>
 					</div>
 				</div>
-			</div> <!-- .fullwidth-block -->
+			</div>
 		</main>
-
 		<footer class="site-footer" style="height:200px !important; padding: 0 0 0;">
 			<div class="container">
 				<div class="row">
@@ -146,3 +125,7 @@
 	</body>
 
 </html>
+<?php
+}
+else
+	header("Location:login.html");

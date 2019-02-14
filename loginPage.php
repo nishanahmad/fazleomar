@@ -11,11 +11,6 @@
 		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<!-- Loading main css file -->
 		<link rel="stylesheet" href="style.css">
-		
-		<!--[if lt IE 9]>
-		<script src="js/ie-support/html5.js"></script>
-		<script src="js/ie-support/respond.js"></script>
-		<![endif]-->
 
 	</head>
 
@@ -40,7 +35,7 @@
 								<!--li class="menu-item"><a href="academics.html">Academics</a></li-->
 								<li class="menu-item"><a href="#">Facilities</a></li>
 								<li class="menu-item"><a href="gallery.php">Gallery</a></li>
-								<li class="menu-item current-menu-item"><a href="#">Docs</a></li>
+								<li class="menu-item"><a href="docs.html">Docs</a></li>
 								<!--li class="menu-item"><a href="contact.html">Contact</a></li-->
 							</ul> <!-- .menu -->
 						</div> <!-- .main-navigation -->
@@ -51,7 +46,7 @@
 
 				<div class="page-title">
 					<div class="container">
-						<h2>Documents</h2>
+						<h2>Login</h2>
 					</div>
 				</div>
 			</header>
@@ -62,18 +57,22 @@
 				<div class="container">
 					<div class="col-md-8">
 						<div class="content">
-							<article>
-								<br/><br/>
-								<header>
-									<h2 class="entry-title">TC Preview</h2>
-								</header>
-
-								<div class="entry-content" id="tc">
-									<figure class="featured-image">
-										<img src="images/tc.jpg" alt="">
-									</figure>
+								<div align="center">
+									<div class="wrapper">
+										<div class="container">
+											<h2 class="entry-title">Login</h2>																				<?php 
+											if(isset($_GET['message']))
+											{
+												echo '<font style="color:red;text-shadow: none;font-weight:bold;font-size:20px;">'.$_GET['message'].'</font>';
+											}																														?>						
+											<form class="form" name="frmUser" method="post" action="login.php">
+												<input type="text" name="user_name" placeholder="Username" required><br/><br/>
+												<input type="password" name='password' placeholder="Password" required><br/><br/> 			
+												<input type="submit" value="Login"/>
+											</form>
+										</div>
+									</div>
 								</div>
-							</article>
 						</div>
 					</div>
 				</div>
