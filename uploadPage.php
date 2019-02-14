@@ -128,4 +128,4 @@ if(isset($_SESSION["user_name"]))
 <?php
 }
 else
-	header("Location:login.html");
+	header("Location:loginPage.php");

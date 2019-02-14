@@ -158,9 +158,9 @@ else
 							
 						</div>
 					</div>
-									<form action="uploadPage.php" style="float:right">
-					<input type="submit" value="Upload" name="submit">
-				</form>
+					<form action="uploadPage.php" style="float:right">
+						<input type="submit" value="Upload" name="submit">
+					</form>
 				</div>
 			</div>
 		</main>
